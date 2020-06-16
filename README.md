@@ -16,3 +16,8 @@
 
 - 跨平台设置环境变量: cross-env
   安装: npm i cross-env --save-dev
+
+### 使用 koa-parameter 校验参数
+
+- 安装
+  npm i koa-parameter --save
