@@ -1,5 +1,10 @@
-# Nodejs 开发防知乎服务端(koa 框架 + MongoDB 数据库 + JWT 认证)
+## Nodejs 开发防知乎服务端
 
-## 深入理解 RESTful API
+技术栈: (koa 框架 + MongoDB 数据库 + JWT 认证)
 
-## 错误处理
+### 深入理解 RESTful API
+
+### 错误处理
+
+- 运行时错误, 如:500
+- 逻辑错误, 如: 404, 412, 422
