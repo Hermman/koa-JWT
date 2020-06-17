@@ -10,9 +10,10 @@
 - 逻辑错误, 如: 404, 412, 422
 
 - 使用 koa-json-error 第三方中间件
-  安装: koa-json-error
-  使用 koa-json-error 的默认配置处理错误
-  修改配置使其在生产环境下禁用错误堆栈的返回
+
+  - 安装: koa-json-error
+  - 使用 koa-json-error 的默认配置处理错误
+  - 修改配置使其在生产环境下禁用错误堆栈的返回
 
 - 跨平台设置环境变量: cross-env
   安装: npm i cross-env --save-dev
@@ -165,3 +166,16 @@
 - 时效性
   JWT 要等待时间过期才被销毁
   session 可手动被清除销毁
+
+#### jsontoken
+
+- 安装: npm i jsonwebtoken
+- 签名
+- 验证
+
+#### 实现登录并获取 token
+
+操作步骤：
+
+- 登录接口设计
+- 使用 `jsonewebtoken` 生成 `token`
