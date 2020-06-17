@@ -21,3 +21,46 @@
 
 - 安装
   npm i koa-parameter --save
+
+### 使用 MongoDB 数据库
+
+- 什么是 NoSQL?
+  对不用于传统关系型数据库的统称
+
+- NoSQL 数据库的分类
+
+  - 列存储 （HBase）
+  - 文档存储（MongoDB）
+  - Key-value 存储（Redis）
+  - 图存储 （FlockDB） 【不常用的高级存储】
+  - 对象存储 （db4o） 【不常用的高级存储】
+  - XML 存储 （BaseX） 【不常用的高级存储】
+
+- 为什么要用 NoSQL?
+
+  - 简单，没有复杂的规范
+  - 便于横拓展
+  - 适合超大规模数据存储
+  - 很灵活的存储复杂结构的数据（Schema Free）
+
+- 什么是 MongoDB?
+
+  - 面向文档存储的开源数据库
+  - 由 C++ 编写
+
+- 为什么要使用 MongoDB?
+
+  - 性能好（内存计算）
+  - 大规模数据存储 （扩展性好）
+  - 安全可靠 （本地复制， 自动故障转移）
+  - 方便存储复杂数据结构
+
+- MongoDB 下载
+  官网下载
+
+- 使用云 MongoDB
+
+  - MongoDB 官方的 MongoDB Atlas (免费 + 收费)
+
+- 使用 Mongoose 连接 MongoDB
+- 安装： npm i mongoose --save
