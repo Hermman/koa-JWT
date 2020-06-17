@@ -64,3 +64,16 @@
 
 - 使用 Mongoose 连接 MongoDB
 - 安装： npm i mongoose --save
+
+### 设计用户模块的 Schema
+
+操作步骤：
+
+- 分析用户模块的属性
+- 编写用户模块的 Schema
+- 使用 Schema 生成用户 Model
+
+### 使用 MongoDB 实现用户的增删改查
+
+- 使用 Mongoose 实现增删改查
+- 使用 Postman 测试增删改查
