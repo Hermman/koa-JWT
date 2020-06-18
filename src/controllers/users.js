@@ -15,7 +15,13 @@ class UsersCtl {
   }
 
   async findById(ctx) {
-    const user = await User.findById(ctx.params.id);
+    const { fields } = ctx.query;
+    const selectFields = fields
+      .split(";")
+      .filter((f) => f)
+      .map((f) => " +" + f)
+      .join("");
+    const user = await User.findById(ctx.params.id).select(selectFields);
     if (!user) {
       ctx.throw(404, "用户不存在");
     }
@@ -40,6 +46,10 @@ class UsersCtl {
     ctx.verifyParams({
       name: { type: "string", required: false },
       password: { type: "string", required: false },
+      avatar_url: { type: "string", requied: false },
+      gender: { type: "string", requied: false },
+      headline: { type: "string", requied: false },
+      locations: { type: "array", itemType: "object", requied: false },
     });
 
     const user = await User.findByIdAndUpdate(ctx.params.id, ctx.request.body);
