@@ -3,6 +3,13 @@ const User = require("../models/users");
 const { secret } = require("../config");
 
 class UsersCtl {
+  // 授权中间件
+  async checkOwner(ctx, next) {
+    if (ctx.params.id !== ctx.state.user._id) {
+      ctx.throw(403, "没有授权");
+    }
+    await next();
+  }
   async find(ctx) {
     ctx.body = await User.find();
   }

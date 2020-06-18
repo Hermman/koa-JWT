@@ -7,13 +7,15 @@ const app = new Koa();
 const routing = require("./routes");
 const { connectionStr } = require("./config");
 
+const PORT = 3000;
+
 mongoose.connect(
   connectionStr,
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   },
-  () => console.log("MongoDB 连接成功了！")
+  () => console.log("MongoDB connected successfully！")
 );
 mongoose.connection.on("error", console.error);
 
@@ -27,4 +29,4 @@ app.use(bodyParser());
 app.use(parameter(app));
 routing(app);
 
-app.listen(3000, () => console.log("程序运行在 3000 端口"));
+app.listen(PORT, () => console.log(`The servivce starts at port ${PORT} `));
