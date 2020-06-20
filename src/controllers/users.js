@@ -11,7 +11,12 @@ class UsersCtl {
     await next();
   }
   async find(ctx) {
-    ctx.body = await User.find();
+    const { per_page = 10 } = ctx.query;
+    const page = Math.max(ctx.query.page * 1, 1) - 1;
+    const prePage = Math.max(per_page * 1, 1);
+    ctx.body = await User.find()
+      .limit(prePage)
+      .skip(page * prePage);
   }
 
   async findById(ctx) {
@@ -104,6 +109,15 @@ class UsersCtl {
   async listFollowers(ctx) {
     const users = await User.find({ following: ctx.params.id });
     ctx.body = users;
+  }
+
+  // 用户存在与否中间件
+  async checkUserExist(ctx, next) {
+    const user = await User.findById(ctx.state.user.__id);
+    if (!user) {
+      ctx.throw(404, "用户不存在");
+    }
+    await next();
   }
 
   // 关注接口
