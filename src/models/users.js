@@ -37,6 +37,10 @@ const userSchema = new Schema({
     ],
     select: false,
   },
+  following: {
+    type: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    select: false,
+  },
 });
 
 // model的第一个参数为集合的名字，（也就是数据库表的名字）

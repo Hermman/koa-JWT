@@ -88,6 +88,49 @@ class UsersCtl {
       token,
     };
   }
+
+  // 获取关注人列表接口
+  async listFollowing(ctx) {
+    const user = await (await User.findById(ctx.params.id))
+      .isSelected("+following")
+      .populate("following");
+    if (!user) {
+      ctx.throw(404);
+    }
+    ctx.body = user.following;
+  }
+
+  // 获取粉丝接口
+  async listFollowers(ctx) {
+    const users = await User.find({ following: ctx.params.id });
+    ctx.body = users;
+  }
+
+  // 关注接口
+  async follow(ctx) {
+    const me = await (await User.findById(ctx.state.user.__id)).select(
+      "+following"
+    );
+    if (!me.following.map((id) => id.toString()).includes(ctx.params.id)) {
+      me.following.push(ctx.params.id);
+      me.save();
+    }
+    ctx.status = 204;
+  }
+
+  // 取消关注
+  async unfollow(ctx) {
+    const me = await (await User.findById(ctx.state.user.__id)).select(
+      "+following"
+    );
+    const index = me.following
+      .map((id) => id.toString())
+      .indexOf(ctx.params.id);
+    if (index > -1) {
+      me.following.splice(index, 1);
+      me.save();
+    }
+  }
 }
 
 module.exports = new UsersCtl();

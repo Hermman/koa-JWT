@@ -9,6 +9,9 @@ const {
   delete: del,
   login,
   checkOwner,
+  listFollowing,
+  unfollow,
+  listFollowers,
 } = require("../controllers/users");
 const { secret } = require("../config");
 
@@ -39,5 +42,13 @@ router.patch("/:id", auth, checkOwner, update); // patch 会局部替换
 router.delete("/:id", auth, checkOwner, del);
 
 router.post("/login", login);
+
+router.get("/:id/following", listFollowing);
+
+router.get("/:id/followers", listFollowers);
+
+router.put("/following/:id", auth);
+
+router.delete("/following/:id", auth, unfollow);
 
 module.exports = router;
